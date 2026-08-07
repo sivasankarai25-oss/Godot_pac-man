@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="1"]
+
+[node type="ColorRect" name="Background"]
+color = Color(0, 0, 0, 1)
+size = Vector2(0, 0)
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node type="VBoxContainer" name="VBoxContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -150
+margin_top = -200
+margin_right = 150
+margin_bottom = 200
+alignment = 1
+
+[node type="Label" name="TitleLabel"]
+text = "Pac-Man"
+align = 1
+valign = 1
+custom_colors/font_color = Color(1, 1, 1, 1)
+font_size = 96
+
+[node type="Button" name="StartButton"]
+text = "Start Game"
+size_flags_horizontal = 2
+size_flags_vertical = 1
+minimum_size = Vector2(300, 80)
+
+[node type="Button" name="SettingsButton"]
+text = "Settings"
+size_flags_horizontal = 2
+size_flags_vertical = 1
+minimum_size = Vector2(300, 80)
+
+[node type="Button" name="CreditsButton"]
+text = "Credits"
+size_flags_horizontal = 2
+size_flags_vertical = 1
+minimum_size = Vector2(300, 80)
+
+[node type="Button" name="QuitButton"]
+text = "Quit"
+size_flags_horizontal = 2
+size_flags_vertical = 1
+minimum_size = Vector2(300, 80)

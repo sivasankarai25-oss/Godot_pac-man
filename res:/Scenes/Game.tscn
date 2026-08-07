@@ -1,0 +1,22 @@
+[gd_scene load_steps=8 format=3 uid="1"]
+
+[node type="Node2D" name="Game" script="res://Scripts/game.gd"]
+
+[node type="Node2D" name="Maze"]
+
+[node type="Node2D" name="Pacman"]
+position = Vector2(13.5 * 16, 17 * 16)  # Example position, adjust as needed
+
+[node type="Node2D" name="Blinky"]
+position = Vector2(13.5 * 16, 11 * 16)  # Ghost house center
+
+[node type="Node2D" name="Pinky"]
+position = Vector2(13.5 * 16, 11 * 16)
+
+[node type="Node2D" name="Inky"]
+position = Vector2(13.5 * 16, 11 * 16)
+
+[node type="Node2D" name="Clyde"]
+position = Vector2(13.5 * 16, 11 * 16)
+
+[node type="CanvasLayer" name="HUD"]

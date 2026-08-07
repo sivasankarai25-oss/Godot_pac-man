@@ -1,0 +1,133 @@
+[gd_scene load_steps=5 format=3 uid="1"]
+
+[node type="CharacterBody2D" name="Ghost"]
+collision_layer = 1
+collision_mask = 1
+position = Vector2(0, 0)
+
+[node type="AnimatedSprite2D" name="AnimatedSprite2D"]
+sprite_frames = SubResource(0)
+animation = "right"
+frame = 0
+scale = Vector2(1, 1)
+z_index = 1
+
+[node type="CollisionShape2D" name="CollisionShape2D"]
+shape = SubResource(1)
+position = Vector2(0, 0)
+
+[subresource type="SpriteFrames" id=0]
+frames/right = AtlasTexture( {
+	"atlas": ExtResource( 0 ),
+	"region": Rect2( 0, 0, 16, 16 )
+} )
+frames/right/0 = AtlasTexture( {
+	"atlas": ExtResource( 0 ),
+	"region": Rect2( 0, 0, 16, 16 )
+} )
+frames/right/1 = AtlasTexture( {
+	"atlas": ExtResource( 0 ),
+	"region": Rect2( 16, 0, 16, 16 )
+} )
+frames/right/2 = AtlasTexture( {
+	"atlas": ExtResource( 0 ),
+	"region": Rect2( 32, 0, 16, 16 )
+} )
+frames/left = AtlasTexture( {
+	"atlas": ExtResource( 0 ),
+	"region": Rect2( 0, 16, 16, 16 )
+} )
+frames/left/0 = AtlasTexture( {
+	"atlas": ExtResource( 0 ),
+	"region": Rect2( 0, 16, 16, 16 )
+} )
+frames/left/1 = AtlasTexture( {
+	"atlas": ExtResource( 0 ),
+	"region": Rect2( 16, 16, 16, 16 )
+} )
+frames/left/2 = AtlasTexture( {
+	"atlas": ExtResource( 0 ),
+	"region": Rect2( 32, 16, 16, 16 )
+} )
+frames/up = AtlasTexture( {
+	"atlas": ExtResource( 0 ),
+	"region": Rect2( 0, 32, 16, 16 )
+} )
+frames/up/0 = AtlasTexture( {
+	"atlas": ExtResource( 0 ),
+	"region": Rect2( 0, 32, 16, 16 )
+} )
+frames/up/1 = AtlasTexture( {
+	"atlas": ExtResource( 0 ),
+	"region": Rect2( 16, 32, 16, 16 )
+} )
+frames/up/2 = AtlasTexture( {
+	"atlas": ExtResource( 0 ),
+	"region": Rect2( 32, 32, 16, 16 )
+} )
+frames/down = AtlasTexture( {
+	"atlas": ExtResource( 0 ),
+	"region": Rect2( 0, 48, 16, 16 )
+} )
+frames/down/0 = AtlasTexture( {
+	"atlas": ExtResource( 0 ),
+	"region": Rect2( 0, 48, 16, 16 )
+} )
+frames/down/1 = AtlasTexture( {
+	"atlas": ExtResource( 0 ),
+	"region": Rect2( 16, 48, 16, 16 )
+} )
+frames/down/2 = AtlasTexture( {
+	"atlas": ExtResource( 0 ),
+	"region": Rect2( 32, 48, 16, 16 )
+} )
+frames/frightened = AtlasTexture( {
+	"atlas": ExtResource( 0 ),
+	"region": Rect2( 0, 64, 16, 16 )
+} )
+frames/frightened/0 = AtlasTexture( {
+	"atlas": ExtResource( 0 ),
+	"region": Rect2( 0, 64, 16, 16 )
+} )
+frames/frightened/1 = AtlasTexture( {
+	"atlas": ExtResource( 0 ),
+	"region": Rect2( 16, 64, 16, 16 )
+} )
+frames/frightened/2 = AtlasTexture( {
+	"atlas": ExtResource( 0 ),
+	"region": Rect2( 32, 64, 16, 16 )
+} )
+frames/frightened_flash = AtlasTexture( {
+	"atlas": ExtResource( 0 ),
+	"region": Rect2( 0, 80, 16, 16 )
+} )
+frames/frightened_flash/0 = AtlasTexture( {
+	"atlas": ExtResource( 0 ),
+	"region": Rect2( 0, 80, 16, 16 )
+} )
+frames/frightened_flash/1 = AtlasTexture( {
+	"atlas": ExtResource( 0 ),
+	"region": Rect2( 16, 80, 16, 16 )
+} )
+frames/frightened_flash/2 = AtlasTexture( {
+	"atlas": ExtResource( 0 ),
+	"region": Rect2( 32, 80, 16, 16 )
+} )
+frames/eyes = AtlasTexture( {
+	"atlas": ExtResource( 0 ),
+	"region": Rect2( 0, 96, 16, 16 )
+} )
+frames/eyes/0 = AtlasTexture( {
+	"atlas": ExtResource( 0 ),
+	"region": Rect2( 0, 96, 16, 16 )
+} )
+frames/eyes/1 = AtlasTexture( {
+	"atlas": ExtResource( 0 ),
+	"region": Rect2( 16, 96, 16, 16 )
+} )
+frames/eyes/2 = AtlasTexture( {
+	"atlas": ExtResource( 0 ),
+	"region": Rect2( 32, 96, 16, 16 )
+} )
+
+[subresource type="Shape2D" id=1]

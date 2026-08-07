@@ -1,0 +1,9 @@
+[config]
+
+application/config/icon = "res://icon.png"
+application/config/name = "Pac-Man"
+application/run/main_scene = "res://Scenes/Main.tscn"
+
+[rendering]
+
+[rendering/quality/driver/driver_name] = "vulkan"
