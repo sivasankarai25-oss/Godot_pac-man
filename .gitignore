@@ -1,0 +1,10 @@
+PacmanGame/android/build/
+
+# Godot generated files
+.godot/
+export.cfg
+export_presets.cfg
+
+# Android generated build files
+**/android/build/
+**/android/.gradle/
