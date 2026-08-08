@@ -1,0 +1,6 @@
+[gd_scene load_steps=3 format=3 uid="1"]
+
+[node type="Node" name="Main"]
+
+[node type="Node" name="GameManager"]
+script = "res://Scripts/game_manager.gd"
