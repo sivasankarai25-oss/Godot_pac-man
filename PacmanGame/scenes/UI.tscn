@@ -1,0 +1,309 @@
+[gd_scene load_steps=3 format=3 uid="uid://euimanager1"]
+
+[ext_resource type="Script" path="res://scripts/ui_manager.gd" id="1_ui"]
+[ext_resource type="FontFile" path="res://assets/Fonts/upheavtt.ttf" id="2_font"]
+[ext_resource type="Script" path="res://scripts/touch_dpad.gd" id="3_dpad"]
+
+[node name="UIManager" type="CanvasLayer"]
+script = ExtResource("1_ui")
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="TopBar" type="HBoxContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 8.0
+offset_bottom = 32.0
+alignment = 1
+theme_override_constants/separation = 40
+
+[node name="ScoreLabel" type="Label" parent="HUD/TopBar"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "SCORE: 0"
+
+[node name="HighScoreLabel" type="Label" parent="HUD/TopBar"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 0.9, 0.3, 1)
+text = "HIGH: 0"
+
+[node name="LevelLabel" type="Label" parent="HUD/TopBar"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.6, 0.8, 1, 1)
+text = "LEVEL: 1"
+
+[node name="BottomBar" type="VBoxContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -56.0
+offset_bottom = -8.0
+alignment = 1
+
+[node name="PowerTimerBar" type="ProgressBar" parent="HUD/BottomBar"]
+custom_minimum_size = Vector2(200, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+show_percentage = false
+modulate = Color(0.4, 0.6, 1, 1)
+
+[node name="LivesContainer" type="HBoxContainer" parent="HUD/BottomBar"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+theme_override_constants/separation = 6
+
+[node name="PauseButton" type="Button" parent="HUD"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+offset_left = -48.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = 34.0
+mouse_filter = 0
+text = "II"
+
+[node name="RestartScreenButton" type="Button" parent="HUD"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -34.0
+offset_right = 68.0
+offset_bottom = -8.0
+mouse_filter = 0
+text = "RESTART"
+
+[node name="PauseScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+visible = false
+
+[node name="Dim" type="ColorRect" parent="PauseScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.7)
+
+[node name="Panel" type="VBoxContainer" parent="PauseScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -50.0
+offset_right = 80.0
+offset_bottom = 50.0
+alignment = 1
+theme_override_constants/separation = 16
+
+[node name="PausedLabel" type="Label" parent="PauseScreen/Panel"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+horizontal_alignment = 1
+text = "PAUSED"
+
+[node name="ResumeButton" type="Button" parent="PauseScreen/Panel"]
+layout_mode = 2
+text = "RESUME"
+
+[node name="MenuButton" type="Button" parent="PauseScreen/Panel"]
+layout_mode = 2
+text = "MAIN MENU"
+
+[node name="GameOverScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+visible = false
+
+[node name="Dim" type="ColorRect" parent="GameOverScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.8)
+
+[node name="Panel" type="VBoxContainer" parent="GameOverScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -70.0
+offset_right = 100.0
+offset_bottom = 70.0
+alignment = 1
+theme_override_constants/separation = 14
+
+[node name="VBox" type="VBoxContainer" parent="GameOverScreen/Panel"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 14
+
+[node name="GameOverLabel" type="Label" parent="GameOverScreen/Panel/VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(1, 0.2, 0.2, 1)
+horizontal_alignment = 1
+text = "GAME OVER"
+
+[node name="FinalScoreLabel" type="Label" parent="GameOverScreen/Panel/VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+horizontal_alignment = 1
+text = "FINAL SCORE: 0"
+
+[node name="RestartButton" type="Button" parent="GameOverScreen/Panel/VBox"]
+layout_mode = 2
+text = "RESTART"
+
+[node name="MenuButton" type="Button" parent="GameOverScreen/Panel/VBox"]
+layout_mode = 2
+text = "MAIN MENU"
+
+[node name="LevelCompleteScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+visible = false
+
+[node name="Dim" type="ColorRect" parent="LevelCompleteScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.7)
+
+[node name="Label" type="Label" parent="LevelCompleteScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -20.0
+offset_right = 120.0
+offset_bottom = 20.0
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(0.3, 1, 0.4, 1)
+horizontal_alignment = 1
+text = "LEVEL COMPLETE!"
+
+[node name="ReadyScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+visible = false
+
+[node name="Label" type="Label" parent="ReadyScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -20.0
+offset_right = 80.0
+offset_bottom = 20.0
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+horizontal_alignment = 1
+text = "READY!"
+
+[node name="TouchControls" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("3_dpad")
+
+[node name="Up" type="Button" parent="TouchControls"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 90.0
+offset_top = -168.0
+offset_right = 130.0
+offset_bottom = -128.0
+mouse_filter = 0
+text = "^"
+
+[node name="Down" type="Button" parent="TouchControls"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 90.0
+offset_top = -88.0
+offset_right = 130.0
+offset_bottom = -48.0
+mouse_filter = 0
+text = "v"
+
+[node name="Left" type="Button" parent="TouchControls"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = -128.0
+offset_right = 90.0
+offset_bottom = -88.0
+mouse_filter = 0
+text = "<"
+
+[node name="Right" type="Button" parent="TouchControls"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 130.0
+offset_top = -128.0
+offset_right = 170.0
+offset_bottom = -88.0
+mouse_filter = 0
+text = ">"

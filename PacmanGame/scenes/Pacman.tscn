@@ -1,0 +1,90 @@
+[gd_scene load_steps=17 format=3 uid="uid://bxr0pacman01"]
+
+[ext_resource type="Script" path="res://scripts/pacman.gd" id="1_pacman"]
+[ext_resource type="Script" path="res://scripts/pacman_ai.gd" id="2_pacmanai"]
+[ext_resource type="Texture2D" path="res://assets/Pacman/Pacman_01.png" id="3_frame1"]
+[ext_resource type="Texture2D" path="res://assets/Pacman/Pacman_02.png" id="4_frame2"]
+[ext_resource type="Texture2D" path="res://assets/Pacman/Pacman_03.png" id="5_frame3"]
+[ext_resource type="Texture2D" path="res://assets/Pacman/Pacman_Death_01.png" id="6_d1"]
+[ext_resource type="Texture2D" path="res://assets/Pacman/Pacman_Death_02.png" id="7_d2"]
+[ext_resource type="Texture2D" path="res://assets/Pacman/Pacman_Death_03.png" id="8_d3"]
+[ext_resource type="Texture2D" path="res://assets/Pacman/Pacman_Death_04.png" id="9_d4"]
+[ext_resource type="Texture2D" path="res://assets/Pacman/Pacman_Death_05.png" id="10_d5"]
+[ext_resource type="Texture2D" path="res://assets/Pacman/Pacman_Death_06.png" id="11_d6"]
+[ext_resource type="Texture2D" path="res://assets/Pacman/Pacman_Death_07.png" id="12_d7"]
+[ext_resource type="Texture2D" path="res://assets/Pacman/Pacman_Death_08.png" id="13_d8"]
+[ext_resource type="Texture2D" path="res://assets/Pacman/Pacman_Death_09.png" id="14_d9"]
+[ext_resource type="Texture2D" path="res://assets/Pacman/Pacman_Death_10.png" id="15_d10"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pac"]
+radius = 13.0
+
+[sub_resource type="Animation" id="Animation_idle"]
+resource_name = "idle"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_frame2")]
+}
+
+[sub_resource type="Animation" id="Animation_chomp"]
+resource_name = "chomp"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_frame1"), ExtResource("4_frame2"), ExtResource("5_frame3")]
+}
+
+[sub_resource type="Animation" id="Animation_death"]
+resource_name = "death"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0, 0.11, 0.22, 0.33, 0.44, 0.55, 0.66, 0.77, 0.88, 0.99),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("6_d1"), ExtResource("7_d2"), ExtResource("8_d3"), ExtResource("9_d4"), ExtResource("10_d5"), ExtResource("11_d6"), ExtResource("12_d7"), ExtResource("13_d8"), ExtResource("14_d9"), ExtResource("15_d10")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pac"]
+_data = {
+"chomp": SubResource("Animation_chomp"),
+"death": SubResource("Animation_death"),
+"idle": SubResource("Animation_idle")
+}
+
+[node name="Pacman" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("1_pacman")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("4_frame2")
+scale = Vector2(1.8, 1.8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pac")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pac")
+}
+
+[node name="PacmanAI" type="Node" parent="."]
+script = ExtResource("2_pacmanai")

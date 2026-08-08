@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://fgamemain1"]
+
+[ext_resource type="Script" path="res://scripts/game_controller.gd" id="1_game"]
+[ext_resource type="PackedScene" path="res://scenes/MazeManager.tscn" id="2_maze"]
+[ext_resource type="PackedScene" path="res://scenes/Pacman.tscn" id="3_pac"]
+[ext_resource type="PackedScene" path="res://scenes/Ghost.tscn" id="4_ghost"]
+[ext_resource type="PackedScene" path="res://scenes/Cherry.tscn" id="5_cherry"]
+[ext_resource type="PackedScene" path="res://scenes/UI.tscn" id="6_ui"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_game")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 896.0
+offset_bottom = 992.0
+color = Color(0.03, 0.03, 0.05, 1)
+z_index = -10
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(448, 496)
+zoom = Vector2(1, 1)
+
+[node name="MazeManager" parent="." instance=ExtResource("2_maze")]
+
+[node name="Pacman" parent="." instance=ExtResource("3_pac")]
+
+[node name="Ghosts" type="Node2D" parent="."]
+
+[node name="RedGhost" parent="Ghosts" instance=ExtResource("4_ghost")]
+ghost_color = Color(0.91, 0.11, 0.14, 1)
+scatter_corner = Vector2i(26, 1)
+
+[node name="GhostAI" parent="Ghosts/RedGhost"]
+personality = 0
+
+[node name="PinkGhost" parent="Ghosts" instance=ExtResource("4_ghost")]
+ghost_color = Color(1, 0.72, 0.85, 1)
+scatter_corner = Vector2i(1, 1)
+
+[node name="GhostAI" parent="Ghosts/PinkGhost"]
+personality = 1
+
+[node name="BlueGhost" parent="Ghosts" instance=ExtResource("4_ghost")]
+ghost_color = Color(0.2, 0.85, 0.95, 1)
+scatter_corner = Vector2i(26, 29)
+
+[node name="GhostAI" parent="Ghosts/BlueGhost"]
+personality = 2
+
+[node name="OrangeGhost" parent="Ghosts" instance=ExtResource("4_ghost")]
+ghost_color = Color(1, 0.65, 0.15, 1)
+scatter_corner = Vector2i(1, 29)
+
+[node name="GhostAI" parent="Ghosts/OrangeGhost"]
+personality = 3
+
+[node name="Cherry" parent="." instance=ExtResource("5_cherry")]
+position = Vector2(464, 656)
+
+[node name="UIManager" parent="." instance=ExtResource("6_ui")]
